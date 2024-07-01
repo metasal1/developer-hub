@@ -1,9 +1,9 @@
+import clsx from 'clsx'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import clsx from 'clsx'
 import Badge from './products/Badge'
 
-export function Navigation({ product, navigation, className }) {
+export function Navigation({ product, navigation, className, activeSection }) {
   let router = useRouter()
 
   // const recentList = navigation.filter((link) => {
@@ -24,9 +24,13 @@ export function Navigation({ product, navigation, className }) {
 
   return (
     <nav className={clsx('text-base lg:text-sm', className)}>
-      <div className='text-2xl mb-4'>{product.name}</div>
+      <div className="mb-4 text-2xl dark:text-neutral-200">{product.name}</div>
+      {/* <Sections
+            className="gap-6 py-2 text-sm flex flex-col mb-8"
+            sections={product.sections}
+            activeSectionId={activeSection?.id}
+          /> */}
       <ul role="list" className="space-y-9">
-        
         {navigation.map((section) => (
           <li key={`${product.name}-${section.title}`}>
             <h2 className="font-display font-medium text-slate-900 dark:text-white">

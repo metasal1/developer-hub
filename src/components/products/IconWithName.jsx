@@ -18,9 +18,9 @@ export function IconWithName({ product, ...props }) {
         <div className="text-sm font-medium leading-none text-slate-800 dark:text-white">
           {product.name}
         </div>
-        <div className="mt-1 text-sm leading-none text-slate-500 dark:text-slate-400">
+        {/* <div className="mt-1 text-sm leading-none text-slate-500 dark:text-slate-400">
           {product.headline}
-        </div>
+        </div> */}
       </div>
     </div>
   )
