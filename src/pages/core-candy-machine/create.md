@@ -19,7 +19,7 @@ If you wish to create your Core Candy Machine Assets into a collection (new or e
 ```ts
 // Create the Candy Machine.
 import { create } from '@metaplex-foundation/mpl-core-candy-machine'
-import { generateSigner } from '@metaplex-foundation/umi'
+import { generateSigner, none } from '@metaplex-foundation/umi'
 
 const candyMachine = generateSigner(umi)
 
@@ -29,6 +29,8 @@ const createIx = await create(umi, {
   collectionUpdateAuthority: umi.identity,
   itemsAvailable: 1000,
   authority: umi.identity.publicKey,
+  configLineSettings: none(),
+  hiddenSettings: none(),
 })
 
 await createIx.sendAndConfirm(umi)
