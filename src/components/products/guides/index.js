@@ -16,7 +16,7 @@ export const guides = {
       ...documentationSection('guides'),
       navigation: [
         {
-          title: 'Solana Newcomers',
+          title: 'Solana Basics',
           links: [
             {
               title: 'What is Solana?',
@@ -56,7 +56,7 @@ export const guides = {
             },
           ],
         },
-        {title: 'Genral',
+        {title: 'General',
           links: [
             {
               title: 'Creating an NFT Collection With Candy Machine',
@@ -74,8 +74,8 @@ export const guides = {
               updated: null, // null means it's never been updated
             },
             {
-              title: 'Creating an SPL Token',
-              href: '/guides/javascript/how-to-create-an-spl-token-on-solana',
+              title: 'How to Create a Solana Token',
+              href: '/guides/javascript/how-to-create-a-solana-token',
               created: '2024-06-16',
               updated: null, // null means it's never been updated
             },
