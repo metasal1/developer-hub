@@ -58,7 +58,7 @@ console.log(signature)
 
 ```ts
 // Create Connection
-const connection = new Connection("https://api.devnet.solana.com", "confirmed",);
+const connection = new Connection("https://devnet-aura.metaplex.com/<YOUR_API_KEY>", "confirmed",);
 
 // Create your transaction
 const transaction = new VersionedTransaction()
@@ -74,7 +74,7 @@ console.log(res)
 
 ```rust
 // Create Connection
-let rpc_client = rpc_client::RpcClient::new("https://api.devnet.solana.com".to_string());
+let rpc_client = rpc_client::RpcClient::new("https://devnet-aura.metaplex.com/<YOUR_API_KEY>".to_string());
 
 // Create your transaction
 let transaction = new Transaction()
@@ -163,4 +163,4 @@ Assert errors are matching errors. Assert will normally take 2 variables (in mos
 
 ### 0x1 Attempt to Debit
 
-This is a common error that reads `Attempt to debit an account but found no record of a prior credit`. This error basicly implies that the account does not have any SOL within it.
+This is a common error that reads `Attempt to debit an account but found no record of a prior credit`. This error basically implies that the account does not have any SOL within it.

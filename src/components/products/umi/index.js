@@ -1,9 +1,7 @@
 import {
-  changelogSection,
   documentationSection,
   guidesSection,
-  recipesSection,
-  referencesSection,
+  referencesSection
 } from '@/shared/sections'
 import { CodeBracketSquareIcon } from '@heroicons/react/24/solid'
 import { Hero } from './Hero'
@@ -27,13 +25,15 @@ export const umi = {
           links: [
             { title: 'Overview', href: '/umi' },
             { 
-              title: 'Getting started', 
+              title: 'Getting Started', 
               href: '/umi/getting-started' },
             {
               title: 'Metaplex Umi Plugins',
               href: '/umi/metaplex-umi-plugins',
             },
-            { title: 'Web3js Differences and Adapters', href: '/umi/web3js-differences-and-adapters' },
+            { title: 'Web3js Differences and Adapters', 
+              href: '/umi/web3js-differences-and-adapters' 
+            },
           ],
         },
         {
@@ -57,6 +57,36 @@ export const umi = {
             { title: 'Transactions', href: '/umi/transactions' },
           ],
         },
+        {
+          title: 'Toolbox',
+          links: [
+            { 
+              title: 'Overview', 
+              href: '/umi/toolbox' 
+            },
+            { 
+              title: 'Create Account', 
+              href: '/umi/toolbox/create-account' },
+            {
+              title: 'Transfer Sol',
+              href: '/umi/toolbox/transfer-sol',
+            },
+            {
+              title: 'Token Managment',
+              href: '/umi/toolbox/token-managment',
+            },
+            { 
+              title: 'Priority Fees and Compute Managment', 
+              href: '/umi/toolbox/priority-fees-and-compute-managment' },
+            {
+              title: 'Address Lookup Table',
+              href: '/umi/toolbox/address-lookup-table',
+            },
+            { 
+              title: 'Transaction Memo', 
+              href: '/umi/toolbox/transaction-memo' },
+          ],
+        },
       ],
     },
     {
@@ -65,6 +95,12 @@ export const umi = {
         {
           title: 'Guides',
           links: [
+            {
+              title: 'Optimal transaction landing',
+              href: '/umi/guides/optimal-transactions-with-compute-units-and-priority-fees',
+              created: '2024-12-01',
+              updated: null, // null means it's never been updated
+            },
             {
               title: 'Serializing and Deserializing Transactions',
               href: '/umi/guides/serializing-and-deserializing-transactions',

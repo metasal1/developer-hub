@@ -92,7 +92,7 @@ A full detailed look at the on chain instruction it can be viewed on [Github](ht
 {% dialect title="JavaScript" id="js" %}
 
 ```ts
-import { generateSigner } from '@metaplex-foundation/umi'
+import { generateSigner, publicKey } from '@metaplex-foundation/umi'
 import { create } from '@metaplex-foundation/mpl-core'
 
 const assetSigner = generateSigner(umi)
@@ -101,6 +101,7 @@ const result = await create(umi, {
   asset: assetSigner,
   name: 'My Asset',
   uri: 'https://example.com/my-asset.json',
+  //owner: publicKey('11111111111111111111111111111111'), //optional to mint into a different wallet
 }).sendAndConfirm(umi)
 ```
 
@@ -225,7 +226,7 @@ MPL Core Assets can be created straight into a collection if your MPL Core Colle
 {% dialect title="JavaScript" id="js" %}
 
 ```ts
-import { generateSigner } from '@metaplex-foundation/umi'
+import { generateSigner, publicKey } from '@metaplex-foundation/umi'
 import {
   createCollection,
   create,
@@ -245,17 +246,18 @@ await createCollection(umi, {
 }).sendAndConfirm(umi)
 
 // fetch the collection
-const collection = fetchCollection(umi, collection.publicKey)
+const collection = await fetchCollection(umi, collectionSigner.publicKey)
 
 
 // generate assetSigner and then create the asset.
-const asset = generateSigner(umi)
+const assetSigner = generateSigner(umi)
 
 await create(umi, {
   asset: assetSigner,
   collection: collection,
   name: 'My Asset',
   uri: 'https://example.com/my-asset.json',
+  //owner: publicKey('11111111111111111111111111111111'), //optional to mint into a different wallet
 }).sendAndConfirm(umi)
 ```
 
@@ -267,33 +269,35 @@ use mpl_core::instructions::{CreateCollectionV1Builder, CreateV1Builder};
 use solana_client::nonblocking::rpc_client;
 use solana_sdk::{signature::Keypair, signer::Signer, transaction::Transaction};
 
-
 pub async fn create_asset_with_collection() {
-
     let rpc_client = rpc_client::RpcClient::new("https://api.devnet.solana.com".to_string());
 
-    let payer = Keypair::new();
+    let signer = Keypair::new(); // Load keypair here.
+
     let collection = Keypair::new();
 
     let create_collection_ix = CreateCollectionV1Builder::new()
         .collection(collection.pubkey())
-        .payer(payer.pubkey())
+        .payer(signer.pubkey())
         .name("My Collection".into())
         .uri("https://example.com/my-collection.json".into())
         .instruction();
 
-    let signers = vec![&collection, &payer];
+    let signers = vec![&collection, &signer];
 
     let last_blockhash = rpc_client.get_latest_blockhash().await.unwrap();
 
     let create_collection_tx = Transaction::new_signed_with_payer(
         &[create_collection_ix],
-        Some(&payer.pubkey()),
+        Some(&signer.pubkey()),
         &signers,
         last_blockhash,
     );
 
-    let res = rpc_client.send_and_confirm_transaction(&create_collection_tx).await.unwrap();
+    let res = rpc_client
+        .send_and_confirm_transaction(&create_collection_tx)
+        .await
+        .unwrap();
 
     println!("Signature: {:?}", res);
 
@@ -301,23 +305,27 @@ pub async fn create_asset_with_collection() {
 
     let create_asset_ix = CreateV1Builder::new()
         .asset(asset.pubkey())
-        .payer(payer.pubkey())
+        .collection(Some(collection.pubkey()))
+        .payer(signer.pubkey())
         .name("My Nft".into())
         .uri("https://example.com/my-nft.json".into())
         .instruction();
 
-    let signers = vec![&asset, &payer];
+    let signers = vec![&asset, &signer];
 
     let last_blockhash = rpc_client.get_latest_blockhash().await.unwrap();
 
     let create_asset_tx = Transaction::new_signed_with_payer(
         &[create_asset_ix],
-        Some(&payer.pubkey()),
+        Some(&signer.pubkey()),
         &signers,
         last_blockhash,
     );
 
-    let res = rpc_client.send_and_confirm_transaction(&create_asset_tx).await.unwrap();
+    let res = rpc_client
+        .send_and_confirm_transaction(&create_asset_tx)
+        .await
+        .unwrap();
 
     println!("Signature: {:?}", res)
 }
@@ -328,19 +336,19 @@ pub async fn create_asset_with_collection() {
 {% dialect title="Rust (CPI)" id="rust-cpi" %}
 
 ```rust
-let create_ix = CreateV1CpiBuilder::new()
-        .asset(input.asset.pubkey())
-        .collection(input.collection)
-        .authority(input.authority)
-        .payer(payer)
-        .owner(input.owner)
-        .update_authority(input.update_authority)
-        .system_program(system_program::ID)
-        .data_state(input.data_state.unwrap_or(DataState::AccountState))
-        .name(input.name.unwrap_or(DEFAULT_ASSET_NAME.to_owned()))
-        .uri(input.uri.unwrap_or(DEFAULT_ASSET_URI.to_owned()))
-        .plugins(input.plugins)
-        .invoke();
+let create_ix = CreateV1CpiBuilder::new(input.program)
+    .asset(input.asset.pubkey())
+    .collection(Some(input.collection))
+    .authority(Some(input.authority))
+    .payer(input.payer)
+    .owner(Some(input.owner))
+    .update_authority(Some(input.update_authority))
+    .system_program(system_program::ID)
+    .data_state(input.data_state.unwrap_or(DataState::AccountState))
+    .name(input.name)
+    .uri(input.uri)
+    .plugins(input.plugins)
+    .invoke();
 ```
 
 {% /dialect %}

@@ -1,6 +1,6 @@
-import { documentationSection } from '@/shared/sections'
-import { Hero } from './Hero'
-import { Logo } from './Logo'
+import { documentationSection } from '@/shared/sections';
+import { Hero } from './Hero';
+import { Logo } from './Logo';
 
 export const global = {
   name: 'Metaplex',
@@ -32,11 +32,15 @@ export const global = {
               title: 'Understanding Programs',
               href: '/understanding-programs',
             },
-            {title: "Metaplex Rust SDKs", href: '/guides/rust/metaplex-rust-sdks'},
+            {
+              title: 'Metaplex Rust SDKs',
+              href: '/guides/rust/metaplex-rust-sdks',
+            },
             { title: 'RPC Providers', href: '/rpc-providers' },
             { title: 'Storage Providers', href: '/storage-providers' },
             { title: 'Stability Index', href: '/stability-index' },
             { title: 'Protocol Fees', href: '/protocol-fees' },
+            {title: 'Terms and Conditions', target:"_blank", href: 'https://www.metaplex.com/terms-and-conditions'},
           ],
         },
         {

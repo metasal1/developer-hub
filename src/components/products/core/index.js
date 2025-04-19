@@ -2,7 +2,7 @@ import {
   changelogSection,
   documentationSection,
   guidesSection,
-  referencesSection
+  referencesSection,
 } from '@/shared/sections'
 import { StopCircleIcon } from '@heroicons/react/24/solid'
 import { Hero } from './Hero'
@@ -11,7 +11,7 @@ export const core = {
   name: 'Core',
   headline: 'Next gen NFT standard',
   description: 'Next generation Solana NFT standard.',
-  navigationMenuCatergory: 'Create',
+  navigationMenuCatergory: 'MPL',
   path: 'core',
   icon: <StopCircleIcon />,
   github: 'https://github.com/metaplex-foundation/mpl-core',
@@ -22,48 +22,103 @@ export const core = {
       ...documentationSection('core'),
       navigation: [
         {
-          title: 'New!',
-          links: [{ title: 'JS SDK V1.0', href: '/core/core-js-sdk-v1-0' }],
-        },
-        {
           title: 'Introduction',
           links: [
-            { title: 'Overview', href: '/core' },
             {
-              title: 'Getting Started',
-              href: '/core/getting-started',
+              title: 'Overview',
+              href: '/core',
             },
-            { title: 'What is an Asset?', href: '/core/what-is-an-asset' },
+            {
+              title: 'What is an Asset?',
+              href: '/core/what-is-an-asset',
+            },
+            {
+              title: 'JSON Schema',
+              href: '/core/json-schema',
+            },
             {
               title: 'Token Metadata Differences',
               href: '/core/tm-differences',
             },
-            { title: 'Ecosystem Support', href: '/core/ecosystem-support' },
-            { title: 'Anchor', href: '/core/using-core-in-anchor' },
-            { title: 'FAQ', href: '/core/faq' },
+            {
+              title: 'Ecosystem Support',
+              href: '/core/ecosystem-support',
+            },
+            {
+              title: 'Anchor',
+              href: '/core/using-core-in-anchor',
+            },
+            {
+              title: 'FAQ',
+              href: '/core/faq',
+            },
+          ],
+        },
+        {
+          title: 'SDK',
+          links: [
+            {
+              title: 'Javascript SDK',
+              href: '/core/sdk/javascript',
+            },
+            {
+              title: 'Rust SDK',
+              href: '/core/sdk/rust',
+            },
           ],
         },
         {
           title: 'Features',
           links: [
-            { title: 'Creating Assets', href: '/core/create-asset' },
-            { title: 'Fetching Assets', href: '/core/fetch' },
-            { title: 'Updating Assets', href: '/core/update' },
-            { title: 'Transferring Assets', href: '/core/transfer' },
-            { title: 'Burning Assets', href: '/core/burn' },
+            {
+              title: 'Creating Assets',
+              href: '/core/create-asset',
+            },
+            {
+              title: 'Fetching Assets',
+              href: '/core/fetch',
+            },
+            {
+              title: 'Updating Assets',
+              href: '/core/update',
+            },
+            {
+              title: 'Transferring Assets',
+              href: '/core/transfer',
+            },
+            {
+              title: 'Burning Assets',
+              href: '/core/burn',
+            },
             {
               title: 'Collection Management',
               href: '/core/collections',
             },
-            { title: 'Helpers', href: '/core/helpers' },
-            { title: 'Deserializing Assets', href: '/core/deserialization' },
+            {
+              title: 'Execute Asset Signing',
+              href: '/core/execute-asset-signing',
+            },
+            {
+              title: 'Helpers',
+              href: '/core/helpers',
+            },
+            {
+              title: 'Deserializing Assets',
+              href: '/core/deserialization',
+            },
           ],
         },
         {
           title: 'Plugins',
           links: [
-            { title: 'Overview', href: '/core/plugins' },
-            { title: 'Adding Plugins', href: '/core/plugins/adding-plugins' },
+            {
+              title: 'Overview',
+              href: '/core/plugins',
+            },
+            {
+              title: 'Adding Plugins',
+              href: '/core/plugins/adding-plugins',
+            },
             {
               title: 'Removing Plugins',
               href: '/core/plugins/removing-plugins',
@@ -88,15 +143,27 @@ export const core = {
               title: 'Burn Delegate Plugin',
               href: '/core/plugins/burn-delegate',
             },
-            { title: 'Royalties Plugin', href: '/core/plugins/royalties' },
+            {
+              title: 'Royalties Plugin',
+              href: '/core/plugins/royalties',
+            },
             {
               title: 'Update Delegate Plugin',
               href: '/core/plugins/update-delegate',
-              updated: "06-19-2024"
+              updated: '06-19-2024',
             },
-            { title: 'Attribute Plugin', href: '/core/plugins/attribute' },
-            { title: 'AddBlocker Plugin', href: '/core/plugins/addBlocker' },
-            { title: 'Edition Plugin', href: '/core/plugins/edition' },
+            {
+              title: 'Attribute Plugin',
+              href: '/core/plugins/attribute',
+            },
+            {
+              title: 'AddBlocker Plugin',
+              href: '/core/plugins/addBlocker',
+            },
+            {
+              title: 'Edition Plugin',
+              href: '/core/plugins/edition',
+            },
             {
               title: 'Immutable Metadata Plugin',
               href: '/core/plugins/immutableMetadata',
@@ -151,7 +218,7 @@ export const core = {
             {
               title: 'AppData Plugin',
               href: '/core/external-plugins/app-data',
-              created: "2024-06-19"
+              created: '2024-06-19',
             },
           ],
         },
@@ -163,9 +230,24 @@ export const core = {
         {
           title: 'General',
           links: [
-            { title: 'Overview', href: '/core/guides' },
-            { title: 'Immutability', href: '/core/guides/immutability' },
-            { title: 'Print Editions', href: '/core/guides/print-editions' },
+            {
+              title: 'Overview',
+              href: '/core/guides',
+            },
+            {
+              title: 'Immutability',
+              href: '/core/guides/immutability',
+            },
+            {
+              title: 'Soulbound Assets',
+              href: '/core/guides/create-soulbound-nft-asset',
+              created: '2024-12-06',
+              updated: null, // null means it's never been updated
+            },
+            {
+              title: 'Print Editions',
+              href: '/core/guides/print-editions',
+            },
             {
               title: 'Oracle Plugin Example',
               href: '/core/guides/oracle-plugin-example',
@@ -180,12 +262,25 @@ export const core = {
           title: 'Javascript',
           links: [
             {
-              title: 'How to Create a Core Asset',
-              href: '/core/guides/javascript/how-to-create-a-core-nft-asset',
+              title: 'How to Create a Core Asset with Javascript',
+              href: '/core/guides/javascript/how-to-create-a-core-nft-asset-with-javascript',
             },
-            { 
-              title: 'Web2 typescript Staking Example', 
-              href: '/core/guides/javascript/web2-typescript-staking-example' 
+            {
+              title: 'How to Create a Core Collection with JavaScript',
+              href: '/core/guides/javascript/how-to-create-a-core-collection-with-javascript',
+            },
+            {
+              title: 'Web2 typescript Staking Example',
+              href: '/core/guides/javascript/web2-typescript-staking-example',
+            },
+          ],
+        },
+        {
+          title: 'Program Concepts',
+          links: [
+            {
+              title: 'Loyalty Card Concept Guide',
+              href: '/core/guides/loyalty-card-concept-guide',
             },
           ],
         },
@@ -193,8 +288,16 @@ export const core = {
           title: 'Anchor',
           links: [
             {
-              title: 'Anchor Staking Example', 
-              href: '/core/guides/anchor/anchor-staking-example' 
+              title: 'How to Create a Core Asset with Anchor',
+              href: '/core/guides/anchor/how-to-create-a-core-nft-asset-with-anchor',
+            },
+            {
+              title: 'How to Create a Core Collection with Anchor',
+              href: '/core/guides/anchor/how-to-create-a-core-collection-with-anchor',
+            },
+            {
+              title: 'Anchor Staking Example',
+              href: '/core/guides/anchor/anchor-staking-example',
             },
           ],
         },
